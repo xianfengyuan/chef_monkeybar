@@ -1,0 +1,10 @@
+#!/bin/sh
+
+export NODE_PATH="<%= node['monkeybar']['home'] %>"
+export NODE_PORT="<%= node['monkeybar']['mgmt_port'] %>"
+export NODE_ENV="<%= node['monkeybar']['nodejs']['node_env'] %>"
+
+cd $NODE_PATH
+exec 2>&1
+
+CACHEDIR=/srv/www/awscache/current exec chpst -u root /usr/local/bin/node $NODE_PATH/<%= node['monkeybar']['route'] %>.js

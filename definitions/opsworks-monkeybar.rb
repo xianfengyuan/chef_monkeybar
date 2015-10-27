@@ -6,6 +6,10 @@ define :opsworks_monkeybar do
     cwd "#{deploy[:deploy_to]}/current"
   end
 
+  execute "/usr/local/bin/npm config set user 0" do
+    cwd "#{deploy[:deploy_to]}/current"
+  end
+
   execute "./node_modules/grunt-cli/bin/grunt build" do
     cwd "#{deploy[:deploy_to]}/current"
   end

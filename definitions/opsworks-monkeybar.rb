@@ -6,6 +6,10 @@ define :opsworks_monkeybar do
     cwd "#{deploy[:deploy_to]}/current"
   end
 
+  execute "./node_modules/grunt-cli/bin/grunt build" do
+    cwd "#{deploy[:deploy_to]}/current"
+  end
+  
   ldir = '/var/log'
   ['/etc/sv', "#{ldir}/#{node[:monkeybar][:application_name]}"].each do |d|
     directory d do

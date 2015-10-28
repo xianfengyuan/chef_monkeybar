@@ -2,11 +2,11 @@ define :opsworks_monkeybar do
   deploy = params[:deploy_data]
   application = params[:app]
 
-  execute "/usr/local/bin/npm install" do
+  execute "/usr/local/bin/npm config set user 0" do
     cwd "#{deploy[:deploy_to]}/current"
   end
 
-  execute "/usr/local/bin/npm config set user 0" do
+  execute "/usr/local/bin/npm install" do
     cwd "#{deploy[:deploy_to]}/current"
   end
 
